@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+    <head>
+    </head>
+    <body>
+        <h1>Unos vica:</h1>
+        <div>
+            <form action="/new" method="POST">
+                <div>
+                    <label>Content: </label>
+                    <input type="text" id="content" name="content" placeholder="Unesite sadržaj">
+                </div>
+                <br>
+                <div>
+                    <label>Category: </label>
+                    <select id='category' name='category'>
+                        {% for data in form_data %}
+                            <option value=" {{ data[0] }} ">{{ data[1] }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <br>
+                <input type="submit" value="Unos">
+            </form> 
+        </div>
+
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li><h2>{{ message }}</h2></li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+     </body>
+</html>
